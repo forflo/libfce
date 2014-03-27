@@ -18,9 +18,11 @@ struct fce_conf {
 	char *end_command;
 };
 
-char *fce_exec(struct fce_env *env, const char *code);
+void fce_exec(struct fce_env *env, const char *code);
 
-char *fce_exec_rc(struct fce_env *env, const char *code);
+int fce_exec_rc(struct fce_env *env, const char *code);
+
+char *fce_execs(struct fce_env *env, const char *code);
 
 int fce_init(struct fce_env *env);
 

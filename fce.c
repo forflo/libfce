@@ -5,18 +5,25 @@
 #include <fcntl.h>
 #include "fce.h"
 
-char *fce_exec(struct fce_env *env, const char *code){
-	return NULL;
+/* Couldn't be implemented because the time got short */
+void fce_exec(struct fce_env *env, const char *code){
 }
 
-char *fce_exec_rc(struct fce_env *env, const char *code){
-	return NULL;
-}
-
-int fce_execs(struct fce_env *env, const char *code){
+/* Couldn't be implemented because the time got short */
+int fce_exec_rc(struct fce_env *env, const char *code){
 	return 0;
 }
 
+/* Couldn't be implemented because the time got short */
+char *fce_execs(struct fce_env *env, const char *code){
+	return NULL;
+}
+
+/* Starts an interactive Interpreter specified by env, 
+	puts it into the background and connects STDIN
+	STDOUT and STDERR to the newly opened pseudo terminal 
+ 	Param: env = A valid pointer to an environment structure
+ 	Return: -1 on failure, 0 on success */
 int fce_init(struct fce_env *env){
 	FILE *temp;
 	int pip[2];
@@ -96,6 +103,13 @@ int fce_envinit(struct fce_env *env, const char *conf, const char *path, const c
 	return 0;
 }
 
+/* Constructs a new fce_conf object. 
+	Param: ec = A valid string that represents the end command
+		the module should send
+		cl = A stringlist containing commands for the interpreter
+			the module should run, before any other command
+	Return: A valid pointer to a populated fce_conf structure
+		or NULL on failure. */
 struct fce_conf *fce_getconf(const char *ec, const char **cl){
 	int i = 0, j;
 	struct fce_conf *conf = (struct fce_conf *) 
